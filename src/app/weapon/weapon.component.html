@@ -20,7 +20,7 @@
                     <input type="text" [name]="weapon.toHitBonus" (ngModelChange)="weapon.toHitBonus=$event" [ngModel]="weapon.toHitBonus">
                 </div>            
             </div>
-            <button (click)="weapons.splice(weaponIndex,weaponIndex || weaponIndex+1)">-</button>    
+            <button (click)="weapons.splice(weaponIndex, 1)">-</button>    
         </div>
     </div>
     <button (click)="weapons.push({ name: 'New Weapon' })">+</button>

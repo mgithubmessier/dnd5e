@@ -5,7 +5,7 @@ export class MiscBonus {
 export class Skill {
     proficiency: boolean;
     name: string;
-    miscBonuses: Array<MiscBonus> = [];
+    miscBonuses: Array<MiscBonus> = [{ detail: 'Miscellaneous Bonus Detail', bonus: 0 }];
     hideSkillDetail: boolean = true;
     constructor(name: string) {
       this.name = name;

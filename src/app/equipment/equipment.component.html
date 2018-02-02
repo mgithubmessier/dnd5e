@@ -16,7 +16,7 @@
                     <input type="text" [name]="equipment.weight" (ngModelChange)="equipment.weight=$event" [ngModel]="equipment.weight">
                 </div>         
             </div>
-            <button (click)="equipments.splice(equipmentIndex,equipmentIndex || equipmentIndex+1)">-</button>    
+            <button (click)="equipments.splice(equipmentIndex, 1)">-</button>    
         </div>
     </div>
     <button (click)="equipments.push({ name: 'New Equipment' })">+</button>

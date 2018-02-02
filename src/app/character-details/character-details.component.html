@@ -12,7 +12,7 @@
                     <input type="text" [name]="characterDetail.detail" (ngModelChange)="characterDetail.detail=$event" [ngModel]="characterDetail.detail">
                 </div>
             </div>
-            <button (click)="characterDetails.splice(characterDetailIndex,characterDetailIndex || characterDetailIndex+1)">-</button>    
+            <button (click)="characterDetails.splice(characterDetailIndex, 1)">-</button>    
         </div>
     </div>
     <button (click)="characterDetails.push({ name: 'New Character Detail' })">+</button>

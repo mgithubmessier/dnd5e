@@ -1,24 +1,29 @@
 <h2>Ability Score</h2>
-<div *ngFor="let abilityScore of abilityScores" class="ability" fxLayout="column">
-    <div fxLayout="row">
+<div fxLayoutGap="30px" fxLayout="column">
+<div *ngFor="let abilityScore of abilityScores" class="ability" fxLayout="column" fxLayoutGap="5px">
+    <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="end center">
       <label [for]="abilityScore.ability" [innerHTML]="abilityScore.ability"></label>
       <input type="text" [name]="abilityScore.ability" (ngModelChange)="abilityScore.score=$event" [ngModel]="abilityScore.score">
       <input type="text" [value]="abilityScore?.getBonus() | bonusPipe" readonly>
     </div>  
-    <div fxLayout="column">
+    <div fxLayout="column" fxLayoutAlign="center end" fxLayoutGap="5px">
       <div *ngFor="let skill of abilityScore.skills" class="skill">
           <label [for]="skill.name" [innerHTML]="skill.name"></label>
           <input type="text" [value]="skill.calculateBonus(abilityScore?.getBonus()) | bonusPipe" readonly>
-          <div fxLayout="row"  [fxHide]="skill.hideSkillDetail" class="skillDetail">
-              <label>Proficiency</label>
-              <input type="checkbox" [name]="skill.name" (ngModelChange)="skill.proficiency=$event" [ngModel]="abilityScore.proficiency">          
-              <div *ngFor="let miscBonus of skill.miscBonuses" class="miscBonus">
+          <div fxLayout="column"  [fxHide]="skill.hideSkillDetail" class="skillDetail" fxLayoutAlign="center end">
+              <div>
+                <label>Proficiency</label>
+                <input type="checkbox" [name]="skill.name" (ngModelChange)="skill.proficiency=$event" [ngModel]="abilityScore.proficiency"> 
+              </div>         
+              <div *ngFor="let miscBonus of skill.miscBonuses; let miscIndex=index" class="miscBonus">
                   <input type="text" [name]="miscBonus.detail" (ngModelChange)="miscBonus.detail=$event" [ngModel]="miscBonus.detail">                  
                   <input type="text" [name]="miscBonus.detail" (ngModelChange)="miscBonus.bonus=$event" [ngModel]="miscBonus.bonus">                  
+                  <button (click)="skill.miscBonuses.splice(miscIndex, 1)">-</button>
                 </div>
-              <button (click)="skill.addMiscBonus()">+</button>
+              <button (click)="skill.miscBonuses.push({ detail: 'Miscellaneous Bonus Detail', bonus: 0 })">+</button>
           </div>   
           <button [innerHTML]="skill.hideSkillDetail ? 'Edit' : 'Done'" (click)="skill.hideSkillDetail=!skill.hideSkillDetail"></button>   
       </div>
     </div>
   </div>
+</div>

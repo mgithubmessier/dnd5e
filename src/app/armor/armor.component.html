@@ -16,7 +16,7 @@
                     <input type="text" [name]="armor.armorClass" (ngModelChange)="armor.armorClass=$event" [ngModel]="armor.armorClass">
                 </div>
             </div>
-            <button (click)="armors.splice(armorIndex,armorIndex || armorIndex+1)">-</button>    
+            <button (click)="armors.splice(armorIndex, 1)">-</button>    
         </div>
     </div>
     <button (click)="armors.push({ name: 'New Armor' })">+</button>
