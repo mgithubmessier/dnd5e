@@ -3,18 +3,18 @@
     <div *ngFor="let equipment of equipments; let equipmentIndex = index">
         <div fxLayout="row">
             <div fxLayout="column">
-                <div class="equipmentName">
+                <div class="equipmentName" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="end center">
                     <label>Name</label>
                     <input type="text" [name]="equipment.name" (ngModelChange)="equipment.name=$event" [ngModel]="equipment.name">
                 </div>
-                <div class="equipmentDetail">
-                    <label>Detail</label>
-                    <input type="text" [name]="equipment.detail" (ngModelChange)="equipment.detail=$event" [ngModel]="equipment.detail">
-                </div>
-                <div class="equipmentWeight">
+                <div class="equipmentWeight" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="end center">
                     <label>Weight</label>
                     <input type="text" [name]="equipment.weight" (ngModelChange)="equipment.weight=$event" [ngModel]="equipment.weight">
-                </div>         
+                </div>     
+                <div class="equipmentDetail" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="end center">
+                    <label>Detail</label>
+                    <textarea type="text" [name]="equipment.detail" (ngModelChange)="equipment.detail=$event" [ngModel]="equipment.detail"></textarea>
+                </div>                    
             </div>
             <button (click)="equipments.splice(equipmentIndex, 1)">-</button>    
         </div>

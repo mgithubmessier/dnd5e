@@ -7,22 +7,22 @@
       <input type="text" [value]="abilityScore?.getBonus() | bonusPipe" readonly>
     </div>  
     <div fxLayout="column" fxLayoutAlign="center end" fxLayoutGap="5px">
-      <div *ngFor="let skill of abilityScore.skills" class="skill" [fxLayout]="skill.hideSkillDetail ? 'row' : 'column'" fxLayoutAlign="center end">
-          <div fxLayout="row" fxLayoutGap="5px">
+      <div *ngFor="let skill of abilityScore.skills" class="skill" [fxLayout]="skill.hideSkillDetail ? 'row' : 'column'" [fxLayoutAlign]="skill.hideSkillDetail ? 'end center' :'center end'" fxLayoutGap="5px">
+          <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="end center">
             <label [for]="skill.name" [innerHTML]="skill.name"></label>
             <input type="text" [value]="skill.calculateBonus(abilityScore?.getBonus()) | bonusPipe" readonly>
           </div>
           <div [fxHide]="skill.hideSkillDetail" class="skillDetail" fxLayout="column" fxLayoutAlign="center end" fxLayoutGap="5px">
-              <div fxL>
+              <div fxLayout="row" fxLayoutAlign="end center">
                 <label>Proficiency</label>
                 <input type="checkbox" [name]="skill.name" (ngModelChange)="skill.proficiency=$event" [ngModel]="abilityScore.proficiency"> 
               </div>         
-              <div *ngFor="let miscBonus of skill.miscBonuses; let miscIndex=index" class="miscBonus">
+              <div *ngFor="let miscBonus of skill.miscBonuses; let miscIndex=index" class="misc-bonus">
                   <input type="text" [name]="miscBonus.detail" (ngModelChange)="miscBonus.detail=$event" [ngModel]="miscBonus.detail">                  
                   <input type="text" [name]="miscBonus.detail" (ngModelChange)="miscBonus.bonus=$event" [ngModel]="miscBonus.bonus">                  
                   <button (click)="skill.miscBonuses.splice(miscIndex, 1)">-</button>
                 </div>
-              <button (click)="skill.miscBonuses.push({ detail: 'Miscellaneous Bonus Detail', bonus: 0 })">+</button>
+              <button (click)="skill.miscBonuses.push({ detail: 'Miscellaneous Bonus', bonus: 0 })">+</button>
           </div>   
           <button [innerHTML]="skill.hideSkillDetail ? 'Edit' : 'Done'" (click)="skill.hideSkillDetail=!skill.hideSkillDetail"></button>   
       </div>

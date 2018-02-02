@@ -3,13 +3,13 @@
     <div *ngFor="let characterDetail of characterDetails; let characterDetailIndex = index">
         <div fxLayout="row">
             <div fxLayout="column">
-                <div class="characterDetailName">
+                <div class="characterDetailName" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="end center">
                     <label>Name</label>
                     <input type="text" [name]="characterDetail.name" (ngModelChange)="characterDetail.name=$event" [ngModel]="characterDetail.name">
                 </div>
-                <div class="characterDetailDetail">
+                <div class="characterDetailDetail" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="end center">
                     <label>Detail</label>
-                    <input type="text" [name]="characterDetail.detail" (ngModelChange)="characterDetail.detail=$event" [ngModel]="characterDetail.detail">
+                    <textarea [name]="characterDetail.detail" (ngModelChange)="characterDetail.detail=$event" [ngModel]="characterDetail.detail"></textarea>
                 </div>
             </div>
             <button (click)="characterDetails.splice(characterDetailIndex, 1)">-</button>    

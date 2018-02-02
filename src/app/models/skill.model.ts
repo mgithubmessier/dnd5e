@@ -5,7 +5,7 @@ export class MiscBonus {
 export class Skill {
     proficiency: boolean;
     name: string;
-    miscBonuses: Array<MiscBonus> = [{ detail: 'Miscellaneous Bonus Detail', bonus: 0 }];
+    miscBonuses: Array<MiscBonus> = [{ detail: 'Miscellaneous Bonus', bonus: 0 }];
     hideSkillDetail: boolean = true;
     constructor(name: string) {
       this.name = name;
@@ -18,8 +18,5 @@ export class Skill {
         this.miscBonuses.forEach((miscBonus) => bonus += Number(miscBonus.bonus));
         bonus += this.proficiency ? 3 : 0;
         return bonus;
-    }
-    addMiscBonus() {
-        this.miscBonuses.push({ detail: 'Miscellaneous Bonus Detail', bonus: 0 });
     }
   }

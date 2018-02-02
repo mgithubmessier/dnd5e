@@ -2,19 +2,19 @@
 <div fxLayout="column" fxLayoutGap="10px">
     <div *ngFor="let armor of armors; let armorIndex = index">
         <div fxLayout="row">
-            <div fxLayout="column">
-                <div class="armorName">
+            <div fxLayout="column" >
+                <div class="armorName" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="end center">
                     <label>Name</label>
                     <input type="text" [name]="armor.name" (ngModelChange)="armor.name=$event" [ngModel]="armor.name">
                 </div>
-                <div class="armorDetail">
-                    <label>Detail</label>
-                    <input type="text" [name]="armor.detail" (ngModelChange)="armor.detail=$event" [ngModel]="armor.detail">
-                </div>
-                <div class="armorClass">
+                <div class="armorClass" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="end center">
                     <label>AC</label>
                     <input type="text" [name]="armor.armorClass" (ngModelChange)="armor.armorClass=$event" [ngModel]="armor.armorClass">
                 </div>
+                <div class="armorDetail" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="end center">
+                    <label>Detail</label>
+                    <textarea type="text" [name]="armor.detail" (ngModelChange)="armor.detail=$event" [ngModel]="armor.detail"></textarea>
+                </div>                
             </div>
             <button (click)="armors.splice(armorIndex, 1)">-</button>    
         </div>

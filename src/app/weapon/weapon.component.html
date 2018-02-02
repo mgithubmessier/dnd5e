@@ -3,22 +3,22 @@
     <div *ngFor="let weapon of weapons; let weaponIndex = index">
         <div fxLayout="row">
             <div fxLayout="column">
-                <div class="weaponName">
+                <div class="weaponName" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="end center">
                     <label>Name</label>
                     <input type="text" [name]="weapon.name" (ngModelChange)="weapon.name=$event" [ngModel]="weapon.name">
                 </div>
-                <div class="weaponDetail">
-                    <label>Detail</label>
-                    <input type="text" [name]="weapon.detail" (ngModelChange)="weapon.detail=$event" [ngModel]="weapon.detail">
-                </div>
-                <div class="weaponDamage">
+                <div class="weaponDamage" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="end center">
                     <label>Damage</label>
                     <input type="text" [name]="weapon.damage" (ngModelChange)="weapon.damage=$event" [ngModel]="weapon.damage">
                 </div>
-                <div class="weaponToHitBonus">
+                <div class="weaponToHitBonus" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="end center">
                     <label>Bonus to hit</label>
                     <input type="text" [name]="weapon.toHitBonus" (ngModelChange)="weapon.toHitBonus=$event" [ngModel]="weapon.toHitBonus">
-                </div>            
+                </div>  
+                <div class="weaponDetail" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="end center">
+                    <label>Detail</label>
+                    <textarea type="text" [name]="weapon.detail" (ngModelChange)="weapon.detail=$event" [ngModel]="weapon.detail"></textarea>
+                </div>                          
             </div>
             <button (click)="weapons.splice(weaponIndex, 1)">-</button>    
         </div>
