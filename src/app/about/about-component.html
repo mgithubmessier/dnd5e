@@ -1,0 +1,7 @@
+<h2>About</h2>
+<div fxLayout="column">
+  <div *ngFor="let aboutField of aboutFields" [class]="'about' + aboutField.getAboutDetail()" fxLayout="row">
+    <label [innerHTML]="aboutField.getAboutDetail()"></label>
+    <input type="text" [name]="aboutField" (ngModelChange)="aboutField.aboutEntry=$event" [ngModel]="aboutField.aboutEntry">
+  </div>    
+</div>

@@ -1,0 +1,27 @@
+<h2 >Weapons</h2>
+<div fxLayout="column" fxLayoutGap="10px">
+    <div *ngFor="let weapon of weapons; let weaponIndex = index">
+        <div fxLayout="row">
+            <div fxLayout="column">
+                <div class="weaponName">
+                    <label>Name</label>
+                    <input type="text" [name]="weapon.name" (ngModelChange)="weapon.name=$event" [ngModel]="weapon.name">
+                </div>
+                <div class="weaponDetail">
+                    <label>Detail</label>
+                    <input type="text" [name]="weapon.detail" (ngModelChange)="weapon.detail=$event" [ngModel]="weapon.detail">
+                </div>
+                <div class="weaponDamage">
+                    <label>Damage</label>
+                    <input type="text" [name]="weapon.damage" (ngModelChange)="weapon.damage=$event" [ngModel]="weapon.damage">
+                </div>
+                <div class="weaponToHitBonus">
+                    <label>Bonus to hit</label>
+                    <input type="text" [name]="weapon.toHitBonus" (ngModelChange)="weapon.toHitBonus=$event" [ngModel]="weapon.toHitBonus">
+                </div>            
+            </div>
+            <button (click)="weapons.splice(weaponIndex,weaponIndex || weaponIndex+1)">-</button>    
+        </div>
+    </div>
+    <button (click)="weapons.push({ name: 'New Weapon' })">+</button>
+</div>

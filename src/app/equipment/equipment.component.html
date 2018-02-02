@@ -1,0 +1,23 @@
+<h2>Equipment</h2>
+<div fxLayout="column" fxLayoutGap="10px">
+    <div *ngFor="let equipment of equipments; let equipmentIndex = index">
+        <div fxLayout="row">
+            <div fxLayout="column">
+                <div class="equipmentName">
+                    <label>Name</label>
+                    <input type="text" [name]="equipment.name" (ngModelChange)="equipment.name=$event" [ngModel]="equipment.name">
+                </div>
+                <div class="equipmentDetail">
+                    <label>Detail</label>
+                    <input type="text" [name]="equipment.detail" (ngModelChange)="equipment.detail=$event" [ngModel]="equipment.detail">
+                </div>
+                <div class="equipmentWeight">
+                    <label>Weight</label>
+                    <input type="text" [name]="equipment.weight" (ngModelChange)="equipment.weight=$event" [ngModel]="equipment.weight">
+                </div>         
+            </div>
+            <button (click)="equipments.splice(equipmentIndex,equipmentIndex || equipmentIndex+1)">-</button>    
+        </div>
+    </div>
+    <button (click)="equipments.push({ name: 'New Equipment' })">+</button>
+</div>

@@ -1,0 +1,19 @@
+<h2>Character Details</h2>
+<div fxLayout="column" fxLayoutGap="10px">
+    <div *ngFor="let characterDetail of characterDetails; let characterDetailIndex = index">
+        <div fxLayout="row">
+            <div fxLayout="column">
+                <div class="characterDetailName">
+                    <label>Name</label>
+                    <input type="text" [name]="characterDetail.name" (ngModelChange)="characterDetail.name=$event" [ngModel]="characterDetail.name">
+                </div>
+                <div class="characterDetailDetail">
+                    <label>Detail</label>
+                    <input type="text" [name]="characterDetail.detail" (ngModelChange)="characterDetail.detail=$event" [ngModel]="characterDetail.detail">
+                </div>
+            </div>
+            <button (click)="characterDetails.splice(characterDetailIndex,characterDetailIndex || characterDetailIndex+1)">-</button>    
+        </div>
+    </div>
+    <button (click)="characterDetails.push({ name: 'New Character Detail' })">+</button>
+</div>

@@ -1,0 +1,23 @@
+<h2>Armor</h2>
+<div fxLayout="column" fxLayoutGap="10px">
+    <div *ngFor="let armor of armors; let armorIndex = index">
+        <div fxLayout="row">
+            <div fxLayout="column">
+                <div class="armorName">
+                    <label>Name</label>
+                    <input type="text" [name]="armor.name" (ngModelChange)="armor.name=$event" [ngModel]="armor.name">
+                </div>
+                <div class="armorDetail">
+                    <label>Detail</label>
+                    <input type="text" [name]="armor.detail" (ngModelChange)="armor.detail=$event" [ngModel]="armor.detail">
+                </div>
+                <div class="armorClass">
+                    <label>AC</label>
+                    <input type="text" [name]="armor.armorClass" (ngModelChange)="armor.armorClass=$event" [ngModel]="armor.armorClass">
+                </div>
+            </div>
+            <button (click)="armors.splice(armorIndex,armorIndex || armorIndex+1)">-</button>    
+        </div>
+    </div>
+    <button (click)="armors.push({ name: 'New Armor' })">+</button>
+</div>
