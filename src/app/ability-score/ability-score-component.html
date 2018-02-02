@@ -7,11 +7,13 @@
       <input type="text" [value]="abilityScore?.getBonus() | bonusPipe" readonly>
     </div>  
     <div fxLayout="column" fxLayoutAlign="center end" fxLayoutGap="5px">
-      <div *ngFor="let skill of abilityScore.skills" class="skill">
-          <label [for]="skill.name" [innerHTML]="skill.name"></label>
-          <input type="text" [value]="skill.calculateBonus(abilityScore?.getBonus()) | bonusPipe" readonly>
-          <div fxLayout="column"  [fxHide]="skill.hideSkillDetail" class="skillDetail" fxLayoutAlign="center end">
-              <div>
+      <div *ngFor="let skill of abilityScore.skills" class="skill" [fxLayout]="skill.hideSkillDetail ? 'row' : 'column'" fxLayoutAlign="center end">
+          <div fxLayout="row" fxLayoutGap="5px">
+            <label [for]="skill.name" [innerHTML]="skill.name"></label>
+            <input type="text" [value]="skill.calculateBonus(abilityScore?.getBonus()) | bonusPipe" readonly>
+          </div>
+          <div [fxHide]="skill.hideSkillDetail" class="skillDetail" fxLayout="column" fxLayoutAlign="center end" fxLayoutGap="5px">
+              <div fxL>
                 <label>Proficiency</label>
                 <input type="checkbox" [name]="skill.name" (ngModelChange)="skill.proficiency=$event" [ngModel]="abilityScore.proficiency"> 
               </div>         
