@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-
+import { UtlilityService } from '../utlility.service';
 export class CharacterDetail {
   name: string;
   detail: string;
@@ -14,5 +14,5 @@ export class CharacterDetail {
 })
 export class CharacterDetailsComponent {
   characterDetails: Array<CharacterDetail> = [new CharacterDetail('New Detail')];
-  constructor() { }
+  constructor(private utilityService: UtlilityService) { }
 }

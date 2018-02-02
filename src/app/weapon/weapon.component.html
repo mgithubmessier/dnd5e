@@ -1,8 +1,8 @@
 <h2 >Weapons</h2>
-<div fxLayout="column" fxLayoutGap="10px">
+<div fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="center end">
     <div *ngFor="let weapon of weapons; let weaponIndex = index">
         <div fxLayout="row">
-            <div fxLayout="column">
+            <div fxLayout="column" fxLayoutGap="5px">
                 <div class="weaponName" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="end center">
                     <label>Name</label>
                     <input type="text" [name]="weapon.name" (ngModelChange)="weapon.name=$event" [ngModel]="weapon.name">
@@ -17,11 +17,11 @@
                 </div>  
                 <div class="weaponDetail" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="end center">
                     <label>Detail</label>
-                    <textarea type="text" [name]="weapon.detail" (ngModelChange)="weapon.detail=$event" [ngModel]="weapon.detail"></textarea>
+                    <textarea (keyup)="$event.target.style.height = ($event.target.scrollHeight-4)+'px'" type="text" [name]="weapon.detail" (ngModelChange)="weapon.detail=$event" [ngModel]="weapon.detail"></textarea>
                 </div>                          
             </div>
-            <button (click)="weapons.splice(weaponIndex, 1)">-</button>    
+            <mat-icon (click)="weapons.splice(weaponIndex, 1)" class="delete">delete</mat-icon>
         </div>
     </div>
-    <button (click)="weapons.push({ name: 'New Weapon' })">+</button>
+    <mat-icon (click)="weapons.push({ name: 'New Weapon' })" class="add">add_circle</mat-icon>
 </div>

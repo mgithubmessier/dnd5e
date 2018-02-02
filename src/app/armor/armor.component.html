@@ -1,11 +1,15 @@
 <h2>Armor</h2>
-<div fxLayout="column" fxLayoutGap="10px">
+<div fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="center end">
     <div *ngFor="let armor of armors; let armorIndex = index">
         <div fxLayout="row">
-            <div fxLayout="column" >
+            <div fxLayout="column" fxLayoutGap="5px">
                 <div class="armorName" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="end center">
                     <label>Name</label>
                     <input type="text" [name]="armor.name" (ngModelChange)="armor.name=$event" [ngModel]="armor.name">
+                </div>
+                <div class="armorType" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="end center">
+                    <label>Type</label>
+                    <input type="text" [name]="armor.type" (ngModelChange)="armor.type=$event" [ngModel]="armor.type">
                 </div>
                 <div class="armorClass" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="end center">
                     <label>AC</label>
@@ -13,11 +17,11 @@
                 </div>
                 <div class="armorDetail" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="end center">
                     <label>Detail</label>
-                    <textarea type="text" [name]="armor.detail" (ngModelChange)="armor.detail=$event" [ngModel]="armor.detail"></textarea>
+                    <textarea (keyup)="$event.target.style.height = ($event.target.scrollHeight-4)+'px'" type="text" [name]="armor.detail" (ngModelChange)="armor.detail=$event" [ngModel]="armor.detail"></textarea>
                 </div>                
             </div>
-            <button (click)="armors.splice(armorIndex, 1)">-</button>    
+            <mat-icon (click)="armors.splice(armorIndex, 1)" class="delete">delete</mat-icon>    
         </div>
     </div>
-    <button (click)="armors.push({ name: 'New Armor' })">+</button>
+    <mat-icon (click)="armors.push({ name: 'New Armor' })" class="add">add_circle</mat-icon>
 </div>

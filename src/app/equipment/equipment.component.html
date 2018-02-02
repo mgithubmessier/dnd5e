@@ -1,8 +1,8 @@
 <h2>Equipment</h2>
-<div fxLayout="column" fxLayoutGap="10px">
+<div fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="center end">
     <div *ngFor="let equipment of equipments; let equipmentIndex = index">
         <div fxLayout="row">
-            <div fxLayout="column">
+            <div fxLayout="column" fxLayoutGap="5px">
                 <div class="equipmentName" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="end center">
                     <label>Name</label>
                     <input type="text" [name]="equipment.name" (ngModelChange)="equipment.name=$event" [ngModel]="equipment.name">
@@ -13,11 +13,11 @@
                 </div>     
                 <div class="equipmentDetail" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="end center">
                     <label>Detail</label>
-                    <textarea type="text" [name]="equipment.detail" (ngModelChange)="equipment.detail=$event" [ngModel]="equipment.detail"></textarea>
+                    <textarea (keyup)="$event.target.style.height = ($event.target.scrollHeight-4)+'px'" type="text" [name]="equipment.detail" (ngModelChange)="equipment.detail=$event" [ngModel]="equipment.detail"></textarea>
                 </div>                    
             </div>
-            <button (click)="equipments.splice(equipmentIndex, 1)">-</button>    
+            <mat-icon (click)="equipments.splice(equipmentIndex, 1)" class="delete">delete</mat-icon>    
         </div>
     </div>
-    <button (click)="equipments.push({ name: 'New Equipment' })">+</button>
+    <mat-icon (click)="equipments.push({ name: 'New Equipment' })" class="add">add_circle</mat-icon>
 </div>

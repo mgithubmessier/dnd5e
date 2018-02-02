@@ -1,14 +1,14 @@
 <form fxLayout="row" fxFlex="0 0 100%" fxLayoutAlign="center start" fxLayoutGap="10px">
-  <div fxLayout="column" fxLayoutGap="10px"> 
+  <div fxLayout="column" fxLayoutGap="10px" fxFlex="0 0 100%"> 
       <about-component fxFlex="1 1 100%"></about-component>
-      <div fxLayout="row" fxLayoutGap="10px">
-          <ability-score-component fxFlex="1 1 100%"></ability-score-component>
-          <div fxLayout="column">
-              <armor-component></armor-component>
-              <weapon-component></weapon-component>            
+      <div fxLayout="row" fxLayoutGap="10px" fxFlex="1 1 100%">
+          <ability-score-component fxFlex="1 1 100%" fxLayoutAlign="start center" fxLayout="column"></ability-score-component>
+          <div fxLayout="column" fxFlex="1 1 100%">
+              <armor-component fxLayoutAlign="start center" fxLayout="column"></armor-component>
+              <weapon-component fxLayoutAlign="start center" fxLayout="column"></weapon-component>            
           </div>
-          <equipment-component fxFlex="1 1 100%"></equipment-component>
-          <character-details-component fxFlex="1 1 100%"></character-details-component>
+          <equipment-component fxFlex="1 1 100%" fxLayoutAlign="start center" fxLayout="column"></equipment-component>
+          <character-details-component fxFlex="1 1 100%" fxLayoutAlign="start center" fxLayout="column"></character-details-component>
       </div>      
   </div>
 </form>
