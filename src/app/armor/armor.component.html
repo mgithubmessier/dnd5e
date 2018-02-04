@@ -1,5 +1,9 @@
 <h2>Armor</h2>
 <div fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="center end">
+    <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="end center" class="totalAC">
+        <label>Total AC</label>
+        <input type="text" [name]="totalAC" (ngModelChange)="totalAC=$event" [ngModel]="totalAC" readonly>
+    </div>
     <div *ngFor="let armor of armors; let armorIndex = index">
         <div fxLayout="row">
             <div fxLayout="column" fxLayoutGap="5px">
@@ -13,7 +17,7 @@
                 </div>
                 <div class="armorClass" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="end center">
                     <label>AC</label>
-                    <input type="text" [name]="armor.armorClass" (ngModelChange)="armor.armorClass=$event" [ngModel]="armor.armorClass">
+                    <input type="number" [name]="armor.armorClass" (ngModelChange)="armor.armorClass=$event" [ngModel]="armor.armorClass" (keyup)="calculateAC()">
                 </div>
                 <div class="armorDetail" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="end center">
                     <label>Detail</label>
@@ -23,5 +27,5 @@
             <mat-icon (click)="armors.splice(armorIndex, 1)" class="delete">delete</mat-icon>    
         </div>
     </div>
-    <mat-icon (click)="armors.push({ name: 'New Armor' })" class="add">add_circle</mat-icon>
+    <mat-icon (click)="armors.push({ name: 'New Armor', type: 'Light' })" class="add">add_circle</mat-icon>
 </div>

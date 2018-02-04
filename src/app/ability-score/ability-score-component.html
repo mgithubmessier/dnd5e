@@ -22,9 +22,15 @@
                   <input type="text" [name]="miscBonus.detail" (ngModelChange)="miscBonus.bonus=$event" [ngModel]="miscBonus.bonus">                  
                   <mat-icon (click)="skill.miscBonuses.splice(miscIndex, 1)" class="delete">delete</mat-icon>
                 </div>
-              <mat-icon (click)="skill.miscBonuses.push({ detail: 'Miscellaneous Bonus', bonus: 0 })" class="add">add_circle</mat-icon>
-          </div>   
-          <mat-icon [innerHTML]="skill.hideSkillDetail ? 'mode_edit' : 'done'" [ngClass]="skill.hideSkillDetail ? 'edit' : 'done'" (click)="skill.hideSkillDetail=!skill.hideSkillDetail"></mat-icon>   
+              <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="end center">
+                <label>Add Skill Bonus</label>
+                <mat-icon (click)="skill.miscBonuses.push({ detail: 'Miscellaneous Bonus', bonus: 0 })" class="add">add_circle</mat-icon>
+              </div>
+            </div>
+            <div fxLayout="row" >
+              <label *ngIf="!skill.hideSkillDetail" fxLayoutAlign="end center" fxLayoutGap="5px">Done</label>  
+              <mat-icon [innerHTML]="skill.hideSkillDetail ? 'mode_edit' : 'done'" [ngClass]="skill.hideSkillDetail ? 'edit' : 'done'" (click)="skill.hideSkillDetail=!skill.hideSkillDetail"></mat-icon>   
+            </div>   
       </div>
     </div>
   </div>

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { UtlilityService } from '../utlility.service';
+import { UtlilityService } from '../services/utlility.service';
 export class CharacterDetail {
   name: string;
   detail: string;

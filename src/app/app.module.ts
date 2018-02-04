@@ -15,7 +15,9 @@ import { WeaponComponent } from './weapon/weapon.component';
 import { EquipmentComponent } from './equipment/equipment.component';
 import { CharacterDetailsComponent } from './character-details/character-details.component';
 
-import { UtlilityService } from './utlility.service';
+import { UtlilityService } from './services/utlility.service';
+import { AbilityScoreService } from './services/ability-score.service';
+import { ArmorService } from './services/armor.service';
 @NgModule({
   imports: [
     BrowserModule,
@@ -36,7 +38,9 @@ import { UtlilityService } from './utlility.service';
     CharacterDetailsComponent
   ],
   providers: [
-    UtlilityService
+    UtlilityService,
+    AbilityScoreService,
+    ArmorService
   ],
   bootstrap: [AppComponent],
   schemas: [
