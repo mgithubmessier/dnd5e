@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm, AbstractControlDirective } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   hideComponet: Array<boolean> = [true, true, true, true, true, true, true];
+  @ViewChild('wholeForm') wholeForm: NgForm;
   constructor() {}
   ngOnInit() {
-    
+    console.log(this.wholeForm);
   }
 }

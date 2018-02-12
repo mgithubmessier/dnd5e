@@ -14,14 +14,11 @@ export class ArmorComponent {
   armors: Array<Armor> = [{ name: 'New Armor', type: 'Light', armorClass: 10 }];
   totalAC: number;
   constructor(private abilityService: AbilityScoreService, private armorService: ArmorService) {
-    this.calculateAC();
+    this.abilityService.getAbility('Dexterity').subscribe((dexAbiltyScore) => this.calculateAC(dexAbiltyScore.getBonus()));    
   }
-  @HostListener('keyup')
-  calculateAC() {
-    const dexAbiltyScore: Ability = this.abilityService.getAbility('Dexterity');
+  private calculateAC(dexBonus: number = 0) {
     let maxDex: number = this.armorService.getMaxDex(this.armors);
-
-    this.totalAC = maxDex > -1 && dexAbiltyScore.getBonus() > maxDex ? maxDex : dexAbiltyScore.getBonus();    
+    this.totalAC = maxDex > -1 && dexBonus > maxDex ? maxDex : dexBonus;
     this.armors.forEach((armor) => this.totalAC += armor.armorClass);
   }
 }
