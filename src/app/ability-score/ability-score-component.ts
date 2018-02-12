@@ -14,7 +14,6 @@ export class AbilityScoreComponent implements OnInit {
     this.abilityService.get().forEach((abilityScoreSubject, index) => {
       abilityScoreSubject.subscribe((abilityScore: Ability) => {
         this.abilityScores[index] = abilityScore;
-        console.log('IT RAN!!!', abilityScore);
       });
     }); 
   }
