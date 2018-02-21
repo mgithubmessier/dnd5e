@@ -1,0 +1,20 @@
+.skill {
+    font-size: .8em;
+    label {
+        text-align: right;
+    }
+    .misc-bonus {
+        font-size: .6em;
+        input[type="text"] {
+            &:first-of-type {
+                width: 100px;
+                font-size: .6em;
+                text-align: center;
+            }
+            &:not(:first-of-type) {
+                width: 20px;                    
+            }
+        }
+
+    }
+}

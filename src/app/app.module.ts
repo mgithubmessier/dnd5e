@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatIconModule } from '@angular/material';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AbilityScoreComponent } from './ability-score/ability-score-component';
 import { BonusPipePipe } from './bonus-pipe.pipe';
@@ -18,13 +19,15 @@ import { CharacterDetailsComponent } from './character-details/character-details
 import { UtlilityService } from './services/utlility.service';
 import { AbilityScoreService } from './services/ability-score.service';
 import { ArmorService } from './services/armor.service';
+import { SkillComponent } from './skill/skill.component';
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     CommonModule,
     FlexLayoutModule,
-    MatIconModule
+    MatIconModule,
+    HttpClientModule
   ],
   declarations: [
     AppComponent,
@@ -35,7 +38,8 @@ import { ArmorService } from './services/armor.service';
     ArmorComponent,
     WeaponComponent,
     EquipmentComponent,
-    CharacterDetailsComponent
+    CharacterDetailsComponent,
+    SkillComponent
   ],
   providers: [
     UtlilityService,

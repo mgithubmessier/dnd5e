@@ -1,11 +1,13 @@
 import { Skill } from './skill.model';
+import { Type } from 'class-transformer';
 export abstract class Ability {
-    ability: string;
+    name: string;
     score: number;
+    @Type(() => Skill)
     skills: Array<Skill>;
     constructor(score: number, ability: string, skills?: Array<Skill>) {
       this.score = score;
-      this.ability = ability;
+      this.name = ability;
       this.skills = skills;
     }
     getBonus(): number {

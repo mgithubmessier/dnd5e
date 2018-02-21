@@ -1,0 +1,25 @@
+<div *ngFor="let skill of abilityScore.skills" class="skill" [fxLayout]="skill.hideSkillDetail ? 'row' : 'column'" [fxLayoutAlign]="skill.hideSkillDetail ? 'end center' :'center end'" fxLayoutGap="5px">
+    <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="end center">
+      <label [for]="skill.name" [innerHTML]="skill.name"></label>
+      <input type="text" [value]="skill.calculateBonus(abilityScore?.getBonus()) | bonusPipe" readonly>
+    </div>
+    <div [fxHide]="skill.hideSkillDetail" class="skillDetail" fxLayout="column" fxLayoutAlign="center end" fxLayoutGap="5px">
+        <div fxLayout="row" fxLayoutAlign="end center">
+          <label [for]="skill.name">Proficiency</label>
+          <input type="checkbox" [name]="skill.name" (ngModelChange)="skill.proficiency=$event" [ngModel]="abilityScore.proficiency"> 
+        </div>         
+        <div *ngFor="let miscBonus of skill.miscBonuses; let miscIndex=index" class="misc-bonus" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="5px">
+            <input type="text" [name]="miscBonus.detail+'Name'" (ngModelChange)="miscBonus.detail=$event" [ngModel]="miscBonus.detail">                  
+            <input type="text" [name]="miscBonus.detail" (ngModelChange)="miscBonus.bonus=$event" [ngModel]="miscBonus.bonus">                  
+            <mat-icon (click)="skill.miscBonuses.splice(miscIndex, 1)" class="delete">delete</mat-icon>
+          </div>
+        <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="end center">
+          <label>Add Skill Bonus</label>
+          <mat-icon (click)="skill.miscBonuses.push({ detail: 'Miscellaneous Bonus', bonus: 0 })" class="add">add_circle</mat-icon>
+        </div>
+      </div>
+      <div fxLayout="row" >
+        <label *ngIf="!skill.hideSkillDetail" fxLayoutAlign="end center" fxLayoutGap="5px">Done</label>  
+        <mat-icon [innerHTML]="skill.hideSkillDetail ? 'mode_edit' : 'done'" [ngClass]="skill.hideSkillDetail ? 'edit' : 'done'" (click)="skill.hideSkillDetail=!skill.hideSkillDetail"></mat-icon>   
+      </div>   
+</div>

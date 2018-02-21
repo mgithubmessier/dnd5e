@@ -10,7 +10,5 @@ export class AppComponent implements OnInit {
   hideComponet: Array<boolean> = [true, true, true, true, true, true, true];
   @ViewChild('wholeForm') wholeForm: NgForm;
   constructor() {}
-  ngOnInit() {
-    console.log(this.wholeForm);
-  }
+  ngOnInit() {}
 }
