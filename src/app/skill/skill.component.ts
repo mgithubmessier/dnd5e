@@ -1,4 +1,4 @@
-import { Component, Input, ElementRef } from '@angular/core';
+import { Component, Input, ElementRef, EventEmitter, Output } from '@angular/core';
 import { Ability } from '../models/ability.model';
 import { AbilityScoreComponent } from '../ability-score/ability-score-component';
 import { AbilityScoreService } from '../services/ability-score.service';
@@ -10,6 +10,7 @@ import { AbilityScoreService } from '../services/ability-score.service';
 })
 export class SkillComponent extends AbilityScoreComponent {
   @Input() abilityScore: Ability;
+  @Output() save: EventEmitter<any> = new EventEmitter<any>();
   constructor(abilityService: AbilityScoreService, elementRef: ElementRef) { 
     super(abilityService, elementRef);
   }

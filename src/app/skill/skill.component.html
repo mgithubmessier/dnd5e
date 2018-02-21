@@ -9,8 +9,8 @@
           <input type="checkbox" [name]="skill.name" (ngModelChange)="skill.proficiency=$event" [ngModel]="abilityScore.proficiency"> 
         </div>         
         <div *ngFor="let miscBonus of skill.miscBonuses; let miscIndex=index" class="misc-bonus" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="5px">
-            <input type="text" [name]="miscBonus.detail+'Name'" (ngModelChange)="miscBonus.detail=$event" [ngModel]="miscBonus.detail">                  
-            <input type="text" [name]="miscBonus.detail" (ngModelChange)="miscBonus.bonus=$event" [ngModel]="miscBonus.bonus">                  
+            <input type="text" [name]="miscBonus.detail+'Name'" (ngModelChange)="miscBonus.detail=$event" [ngModel]="miscBonus.detail" (ngModelChange)="save.emit()">                  
+            <input type="text" [name]="miscBonus.detail" (ngModelChange)="miscBonus.bonus=$event" [ngModel]="miscBonus.bonus" (ngModelChange)="save.emit()">                  
             <mat-icon (click)="skill.miscBonuses.splice(miscIndex, 1)" class="delete">delete</mat-icon>
           </div>
         <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="end center">
@@ -20,6 +20,6 @@
       </div>
       <div fxLayout="row" >
         <label *ngIf="!skill.hideSkillDetail" fxLayoutAlign="end center" fxLayoutGap="5px">Done</label>  
-        <mat-icon [innerHTML]="skill.hideSkillDetail ? 'mode_edit' : 'done'" [ngClass]="skill.hideSkillDetail ? 'edit' : 'done'" (click)="skill.hideSkillDetail=!skill.hideSkillDetail"></mat-icon>   
+        <mat-icon [innerHTML]="skill.hideSkillDetail ? 'mode_edit' : 'done'" [ngClass]="skill.hideSkillDetail ? 'edit' : 'done'" (click)="skill.hideSkillDetail=!skill.hideSkillDetail" (click)="save.emit()"></mat-icon>   
       </div>   
 </div>

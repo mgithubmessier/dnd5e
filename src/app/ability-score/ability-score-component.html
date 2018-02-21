@@ -3,11 +3,11 @@
 <div *ngFor="let abilityScore of abilityScores" class="ability" fxLayout="column" fxLayoutGap="5px">
     <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="end center">
       <label [for]="abilityScore.name" [innerHTML]="abilityScore.name"></label>
-      <input type="text" [name]="abilityScore.name" (ngModelChange)="abilityScore.score=$event" [ngModel]="abilityScore.score" (keyup)="abilityService.setAbility(abilityScore)">
+      <input type="text" [name]="abilityScore.name" (ngModelChange)="abilityScore.score=$event" [ngModel]="abilityScore.score" (ngModelChange)="abilityService.setAbility(abilityScore)">
       <input type="text" [value]="abilityScore?.getBonus() | bonusPipe" readonly>
     </div>  
     <div fxLayout="column" fxLayoutAlign="center end" fxLayoutGap="5px">
-      <skill-component [abilityScore]="abilityScore"></skill-component>
+      <skill-component [abilityScore]="abilityScore" (save)="abilityService.setAbility(abilityScore)"></skill-component>
     </div>
   </div>
 </div>
