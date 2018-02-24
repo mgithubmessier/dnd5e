@@ -5,6 +5,8 @@
       <label [for]="abilityScore.name" [innerHTML]="abilityScore.name"></label>
       <input type="text" [name]="abilityScore.name" (ngModelChange)="abilityScore.score=$event" [ngModel]="abilityScore.score" (ngModelChange)="abilityService.setAbility(abilityScore)">
       <input type="text" [value]="abilityScore?.getBonus() | bonusPipe" readonly>
+      <input type="text" [value]="abilityScore?.getProficiency() | bonusPipe" readonly>
+      <input type="checkbox" (ngModelChange)="abilityScore.proficiency=$event" (ngModelChange)="abilityService.setAbility(abilityScore)" [ngModel]="abilityScore.proficiency" readonly>
     </div>  
     <div fxLayout="column" fxLayoutAlign="center end" fxLayoutGap="5px">
       <skill-component [abilityScore]="abilityScore" (save)="abilityService.setAbility(abilityScore)"></skill-component>

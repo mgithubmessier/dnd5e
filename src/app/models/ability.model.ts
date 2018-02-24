@@ -5,6 +5,7 @@ export abstract class Ability {
     score: number;
     @Type(() => Skill)
     skills: Array<Skill>;
+    proficiency: boolean;
     constructor(score: number, ability: string, skills?: Array<Skill>) {
       this.score = score;
       this.name = ability;
@@ -12,6 +13,9 @@ export abstract class Ability {
     }
     getBonus(): number {
       return Math.floor((this.score - 10)/2);
+    }
+    getProficiency(): number {
+      return this.getBonus() + (this.proficiency ? 3 : 0);
     }
   }
   export class StrengthAbility extends Ability {
