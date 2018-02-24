@@ -2,7 +2,7 @@
 <div fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="center end">
     <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="end center" class="totalAC">
         <label>Total AC</label>
-        <input type="text" [name]="totalAC" (ngModelChange)="totalAC=$event" [ngModel]="totalAC" readonly>
+        <input type="text" [name]="totalAC" [ngModel]="totalAC" readonly>
     </div>
     <div *ngFor="let armor of armors; let armorIndex = index">
         <div fxLayout="row">
@@ -17,7 +17,7 @@
                 </div>
                 <div class="armorClass" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="end center">
                     <label>AC</label>
-                    <input type="number" [name]="armor.armorClass" (ngModelChange)="armor.armorClass=$event" [ngModel]="armor.armorClass" (keyup)="calculateAC()">
+                    <input type="number" [name]="armor.armorClass" (ngModelChange)="armor.armorClass=$event" (ngModelChange)="calculateAC()" [ngModel]="armor.armorClass">
                 </div>
                 <div class="armorDetail" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="end center">
                     <label>Detail</label>
